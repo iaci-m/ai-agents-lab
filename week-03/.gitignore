@@ -1,0 +1,36 @@
+# week-03 本地排除规则；只作用于本目录，不改动仓库其他部分。
+# 保留：源码、uv.lock、教师材料，以及报告所需的结果（results.csv 等）。
+# 注意：仓库根目录 .gitignore 已排除部分同类项，这里补齐为本目录自包含。
+
+# Python 虚拟环境（由 uv.lock 在本地重建，不入库）
+.venv/
+
+# 缓存与字节码
+__pycache__/
+.pytest_cache/
+
+# 凭据与本地环境变量：任何含敏感 Key 的文件都不要上传
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.token
+credentials.json
+
+# LaTeX 编译中间文件
+# 源文件 report.tex、report.pdf 与生成的数据 results.csv 等按 Guide 要求保留，不在此排除。
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+*.xdv
+*.out
+*.toc
+*.lof
+*.lot
+*.nav
+*.snm
+*.vrb
+*.synctex.gz
+report.xdv
