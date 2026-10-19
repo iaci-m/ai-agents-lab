@@ -1,0 +1,92 @@
+{
+  // ===== LaTeX Workshop: 编译工具 =====
+  "latex-workshop.latex.tools": [
+    {
+      "name": "xelatex",
+      "command": "xelatex",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ],
+      "env": {}
+    },
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-xelatex",
+        "%DOC%"
+      ],
+      "env": {}
+    },
+    {
+      "name": "bibtex",
+      "command": "bibtex",
+      "args": ["%DOCFILE%"],
+      "env": {}
+    }
+  ],
+
+  // ===== 编译配方 =====
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk (xelatex)",
+      "tools": ["latexmk"]
+    },
+    {
+      "name": "xelatex x2",
+      "tools": ["xelatex", "xelatex"]
+    },
+    {
+      "name": "xelatex -> bibtex -> xelatex x2",
+      "tools": ["xelatex", "bibtex", "xelatex", "xelatex"]
+    }
+  ],
+
+  // 默认用第一条配方（latexmk + xelatex）
+  "latex-workshop.latex.recipe.default": "first",
+
+  // ===== 编译触发与清理 =====
+  // 保存时自动编译；不想自动编译可改成 "never"
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  // 每次编译前清理辅助文件，避免残留导致交叉引用错误
+  "latex-workshop.latex.autoClean.run": "onBuilt",
+  "latex-workshop.latex.clean.fileTypes": [
+    "*.aux",
+    "*.bbl",
+    "*.blg",
+    "*.idx",
+    "*.ind",
+    "*.lof",
+    "*.lot",
+    "*.out",
+    "*.toc",
+    "*.acn",
+    "*.acr",
+    "*.alg",
+    "*.glg",
+    "*.glo",
+    "*.gls",
+    "*.fls",
+    "*.log",
+    "*.fdb_latexmk",
+    "*.snm",
+    "*.synctex(busy)",
+    "*.synctex.gz"
+  ],
+
+  // ===== PDF 预览 =====
+  // "tab" = VS Code 内置标签页预览（推荐）；也可改 "browser"
+  "latex-workshop.view.pdf.viewer": "tab",
+  // 编译成功后自动打开预览
+  "latex-workshop.view.pdf.autoRefresh": true,
+
+  // ===== 日志与 lint =====
+  "latex-workshop.latex.autoBuild.cleanAndRetry.enabled": true,
+  "latex-workshop.message.error.showWhenNoError": false
+}
